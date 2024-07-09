@@ -4,6 +4,7 @@ import Cheack from "../Pages/Cart";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Details from "../Pages/Details";
 // import Signup from "../Pages/Signup";
+import Home from "../Pages/Home";
 // import Login from "../Pages/Login";
 // import Cheackout from ".../Pages/Cheackout";
 import Cart from "../Pages/Cart";
