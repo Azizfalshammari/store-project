@@ -9,7 +9,7 @@ function Home() {
           <div className='home flex justify-items-center'>
               {/* left */}
               <div className="text text-[#fff]">
-                  <h1>Wellocme</h1>
+                  <h1>Wellocmee</h1>
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit temporibus aperiam obcaecati qui rerum incidunt, saepe, dignissimos laudantium explicabo ea perspiciatis, aut sunt odit quos ab consectetur maxime molestiae optio?</p>
               </div>
               {/* right */}
