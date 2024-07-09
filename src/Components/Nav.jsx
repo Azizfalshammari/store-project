@@ -16,9 +16,8 @@ import React from 'react'
 
         <div className="flex ">
         <div className="icons flex">
-        <i class="fa-regular fa-user mr-[10px]"></i>
-        <i class="fa-solid fa-bag-shopping  mr-[10px]"></i>
-        <i class="far fa-heart  mr-[10px] "></i>
+        {/* <i class="fa-regular fa-user mr-[10px]"></i>
+        <i class="fa-solid fa-bag-shopping  mr-[10px]"></i> */}
     
         </div>
         <div className='search flex ml-[10px]'>
