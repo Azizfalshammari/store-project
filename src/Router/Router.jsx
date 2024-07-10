@@ -1,13 +1,13 @@
 import React from "react";
-import Cheack from "../Pages/Cart";
-
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Details from "../Pages/Details";
-// import Signup from "../Pages/Signup";
 import Home from "../Pages/Home";
-import Login from "../Pages/Login";
-// import Cheackout from ".../Pages/Cheackout";
+import Details from "../Pages/Details";
 import Cart from "../Pages/Cart";
+import Login from "../Pages/Login";
+import PreviousOrders from "../Pages/PreviousOrders";
+import OrderDetailsPage from "../Pages/OrderDetailsPage";
+// import Signup from "../Pages/Signup";
+// import Cheackout from ".../Pages/Cheackout";
 
 function Router() {
   const router = createBrowserRouter([
@@ -34,6 +34,14 @@ function Router() {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/orders",
+      element: <PreviousOrders />,
+    },
+    {
+      path: "/orders/:orderId",
+      element: <OrderDetailsPage />,
     },
   ]);
   return <RouterProvider router={router} />;
