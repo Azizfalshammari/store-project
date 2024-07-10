@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
-// import Navbar from "../components/Navbar";
+import img1 from "../assets/product-return.png";
+import img2 from "../assets/free-delivery.png";
+import img3 from "../assets/payment-method.png";
 
 const Details = () => {
   const [product, setProduct] = useState({});
+  const [showAdd, setShowAdd] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
     axios
       .get(`https://6685a3abb3f57b06dd4d6580.mockapi.io/products/${id}`)
       .then((res) => {
-        setProduct(res.data);
-        console.log(res.data);
-      });
+        setProduct({ ...res.data, quantity: 1 });
+      })
+      .catch((error) => console.error(error));
   }, [id]);
 
   const addToCart = () => {
@@ -21,52 +24,156 @@ const Details = () => {
     const existingProduct = savedCart.find((item) => item.id === product.id);
 
     if (existingProduct) {
-      existingProduct.quantity += 1;
+      existingProduct.quantity += product.quantity;
     } else {
-      savedCart.push({ ...product, quantity: 1 });
+      savedCart.push(product);
     }
 
     localStorage.setItem("cart", JSON.stringify(savedCart));
+    setShowAdd(true);
+  };
+
+  const handleQuantity = (quantity) => {
+    setProduct((prevProduct) => ({ ...prevProduct, quantity }));
   };
 
   return (
     <>
-      {/* <Navbar /> */}
-      <div className="container mx-auto mt-20">
-        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden md:flex">
-          <div className="md:flex-shrink-0">
+      <div className="container mx-auto mt-5 p-4">
+        <div className="max-w-4xl md:flex">
+          <div className="md:w-1/2 p-4">
             <img
-              className="h-auto w-full object-cover md:w-48"
+              className="h-auto w-full object-cover md:h-full"
               src={product.image}
+              alt={product.name}
             />
           </div>
-          <div className="p-8">
-            <div className="uppercase tracking-wide text-sm text-yellow-500 font-semibold">
+          <div className="p-6 md:w-1/2">
+            <div className="uppercase tracking-wide text-sm text-[#1E3A8A] font-semibold">
               {product.category}
             </div>
-            <h1 className="block mt-1 text-lg leading-tight font-medium text-black hover:underline">
+            <h1 className="block mt-1 text-2xl leading-tight font-medium text-black">
               {product.name}
             </h1>
-            <p className="mt-2 text-gray-500">{product.description}</p>
-            <div className="mr-[100%] mt-8">
-              <h2 className="text-yellow-500 text-sm font-semibold">Price:</h2>
+            <p className="mt-1 text-gray-500">{product.description}</p>
+            <p className="mt-1">
+              Brand: <strong>{product.brand}</strong>
+            </p>
+            <hr />
+            <div className="mt-3">
               <p className="mt-1 text-gray-900 text-2xl">${product.price}</p>
             </div>
-            <div className="mt-4">
+            <div className="mt-6 flex space-x-4">
+              <div className="text-center">
+                <img src={img1} alt="Returnable" className="mx-auto" />
+                <p className="text-gray-700 text-sm mt-2">15 days Returnable</p>
+              </div>
+              <div className="text-center">
+                <img src={img2} alt="Free Delivery" className="mx-auto" />
+                <p className="text-gray-700 text-sm mt-2">Free Delivery</p>
+              </div>
+              <div className="text-center">
+                <img src={img3} alt="Secure Transaction" className="mx-auto" />
+                <p className="text-gray-700 text-sm mt-2">Secure Transaction</p>
+              </div>
+            </div>
+            <div className="mt-2 flex items-center">
+              <label htmlFor={`quantity-${product.id}`} className="mr-2">
+                Quantity:
+              </label>
+              <select
+                id={`quantity-${product.id}`}
+                value={product.quantity}
+                onChange={(e) => handleQuantity(parseInt(e.target.value))}
+                className="border mt-4 border-gray-300 rounded px-2 py-1"
+              >
+                {[1, 2, 3, 4, 5].map((num) => (
+                  <option key={num} value={num}>
+                    {num}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div className="mt-4 space-y-4 p-3">
               <button
-                className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 focus:outline-none focus:bg-yellow-600"
+                className="w-full bg-gradient-to-r from-[#FFB526] to-[#ED5004] text-white px-4 py-2 rounded hover:bg-yellow-600 focus:outline-none focus:bg-yellow-600"
                 onClick={addToCart}
               >
                 Add to Cart
               </button>
               <Link to="/">
-                <button className="ml-4 bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400">
+                <button className="w-full bg-gray-300 text-gray-800 px-4 py-2 mt-4 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400">
                   Back to Home Page
                 </button>
               </Link>
             </div>
           </div>
         </div>
+        <div className="mt-4">
+          <h2 className="text-xl font-semibold mr-[100%] p-5">
+            Customer Reviews
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {product.reviews &&
+              product.reviews.map((review, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-300 rounded-lg p-8 text-center"
+                >
+                  <h3 className="flex items-center justify-center space-x-2 mt-4">{`Review ${
+                    index + 1
+                  }`}</h3>
+                  <p className="text-xl font-light italic text-gray-700">
+                    {review.comment}
+                  </p>
+                  <div className="flex items-center justify-center space-x-2 mt-4">
+                    <div className="ml-2 flex">
+                      {Array.from({ length: review.rating }, (i) => (
+                        <svg
+                          key={i}
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-5 w-5 text-yellow-400"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M10 0a1 1 0 0 1 .77.36l2.67 3.23 4.8.7a1 1 0 0 1 .55 1.7l-3.65 3.18 1.1 4.78a1 1 0 0 1-1.45 1.05L10 14.36l-4.56 2.72a1 1 0 0 1-1.45-1.05l1.1-4.78L.28 6.99a1 1 0 0 1 .55-1.7l4.8-.7L9.23.36A1 1 0 0 1 10 0z"
+                          />
+                        </svg>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+        {showAdd && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
+            <div className="bg-white rounded-lg p-8 max-w-md mx-auto text-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-12 w-12 text-green-700 mx-auto mb-4"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M17.707 4.293a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-1.414 0l-5-5a1 1 0 1 1 1.414-1.414L8 13.586l8.293-8.293a1 1 0 0 1 1.414 0z"
+                />
+              </svg>
+              <p className="text-gray-700">Product has been added to cart.</p>
+              <div className="mt-6">
+                <button
+                  onClick={() => setShowAdd(false)}
+                  className="bg-gradient-to-r from-[#FFB526] to-[#ED5004] text-gray-800 px-4 py-2 rounded hover:bg-gray-400 focus:outline-none focus:bg-gray-400"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

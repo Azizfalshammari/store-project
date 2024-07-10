@@ -84,13 +84,16 @@ const Cart = () => {
                     </div>
                   </div>
                 ))}
-                <div className="grid bg-red-700 w-full grid-cols-1 lg:grid-cols-3 gap-4 py-6 px-4 sm:py-12 lg:col-span-6 lg:py-24">
-                  <div className="mx-auto w-full max-w-lg">
+                <div className="grid  w-full grid-cols-1 lg:grid-cols-3 gap-4 py-6 px-4 sm:py-12 lg:col-span-6 lg:py-24">
+                  <div className="mx-auto bg-red-400 w-screen max-w-lg">
                     <h1 className="relative text-2xl font-medium text-gray-700 sm:text-3xl">
                       Secure Checkout
                       <span className="mt-2 block h-1 w-10 bg-teal-600 sm:w-20"></span>
                     </h1>
-                    <form action="" className="mt-10 flex flex-col space-y-4">
+                    <form
+                      action=""
+                      className="mt-10 w-full bg-yellow-500 flex flex-col space-y-4"
+                    >
                       <div>
                         <label
                           htmlFor="email"
