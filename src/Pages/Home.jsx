@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from "react";
 import Nav from "../Components/Nav";
 // import Logout from '../Components/Logout';
@@ -152,4 +154,10 @@ function Home(props) {
   );
 }
 
-export default Home;
+            <Features/>
+            </>
+          )
+        }
+  
+  
+  export default Home
