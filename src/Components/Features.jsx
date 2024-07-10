@@ -16,7 +16,7 @@ function Features() {
           <span className="grid h-20 w-20 place-items-center rounded-full bg-gradient-to-r from-blue-900 to-blue-500 transition-all duration-300 group-hover:bg-sky-400">
             <img src={img1} className='w-[50px]' alt="Icon 1"/>
           </span>
-          <div className="space-y-6 pt-5 font-bold leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+          <div className="space-y-6 pt-5 font-bold leading-7 text-black transition-all duration-300 group-hover:text-white/90">
             <p>Competitive prices.</p>
           </div>
         </div>
@@ -28,7 +28,7 @@ function Features() {
           <span className="grid h-20 w-20 place-items-center rounded-full bg-gradient-to-r from-blue-900 to-blue-500 transition-all duration-300 group-hover:bg-sky-400">
             <img src={img} className='w-[50px]' alt="Icon 2"/>
           </span>
-          <div className="space-y-6 pt-5 font-bold leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+          <div className="space-y-6 pt-5 font-bold leading-7 text-black transition-all duration-300 group-hover:text-white/90">
             <p>High quality.</p>
           </div>
         </div>
@@ -40,7 +40,7 @@ function Features() {
           <span className="grid h-20 w-20 place-items-center rounded-full bg-gradient-to-r from-blue-900 to-blue-500 transition-all duration-300 group-hover:bg-sky-400">
             <img src={img2} className='w-[50px]' alt="Icon 3"/>
           </span>
-          <div className="space-y-6 pt-5 font-bold leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+          <div className="space-y-6 pt-5 font-bold leading-7 text-black transition-all duration-300 group-hover:text-white/90">
             <p>Excellent customer service to ensure your complete satisfaction</p>
           </div>
         </div>
