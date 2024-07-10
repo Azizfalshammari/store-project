@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Nav from "../Components/Nav";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
+  const userid = localStorage.getItem("userid");
+  const nav = useNavigate();
   useEffect(() => {
     const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
     setCart(savedCart);
@@ -25,6 +29,17 @@ const Cart = () => {
     });
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
+
+  const checkout = () => {
+    axios
+      .put(`https://6685a3abb3f57b06dd4d6580.mockapi.io/signup/${userid}`, {
+        cart,
+        total,
+      })
+      .then(() => {
+        nav("/orders");
+      });
   };
 
   return (
@@ -75,7 +90,7 @@ const Cart = () => {
                           ))}
                         </select>
                         <button
-                          className="bg-red-500 text-black px-3 py-1 rounded ml-2"
+                          className=" text-black px-3 py-1 rounded ml-2"
                           onClick={() => handleRemove(item.id)}
                         >
                           Remove
@@ -84,11 +99,11 @@ const Cart = () => {
                     </div>
                   </div>
                 ))}
-                <div className="grid bg-red-700 w-full grid-cols-1 lg:grid-cols-3 gap-4 py-6 px-4 sm:py-12 lg:col-span-6 lg:py-24">
+                <div className="grid  w-full grid-cols-1 lg:grid-cols-3 gap-4 py-6 px-4 sm:py-12 lg:col-span-6 lg:py-24">
                   <div className="mx-auto w-full max-w-lg">
                     <h1 className="relative text-2xl font-medium text-gray-700 sm:text-3xl">
                       Secure Checkout
-                      <span className="mt-2 block h-1 w-10 bg-teal-600 sm:w-20"></span>
+                      <span className="mt-2 block h-1 w-10  sm:w-20"></span>
                     </h1>
                     <form action="" className="mt-10 flex flex-col space-y-4">
                       <div>
@@ -103,7 +118,7 @@ const Cart = () => {
                           id="email"
                           name="email"
                           placeholder="example@gmil.com"
-                          className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"
+                          className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 "
                         />
                       </div>
                       <div className="relative">
@@ -118,7 +133,7 @@ const Cart = () => {
                           id="card-number"
                           name="card-number"
                           placeholder="1234-5678-XXXX-XXXX"
-                          className="block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 pr-10 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"
+                          className="block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 pr-10 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 "
                         />
                         <img
                           src="/images/uQUFIfCYVYcLK0qVJF5Yw.png"
@@ -138,7 +153,7 @@ const Cart = () => {
                             <select
                               name="month"
                               id="month"
-                              className="cursor-pointer rounded border-gray-300 bg-gray-50 py-3 px-2 text-sm shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"
+                              className="cursor-pointer rounded border-gray-300 bg-gray-50 py-3 px-2 text-sm shadow-sm outline-none transition focus:ring-2 "
                             >
                               <option value="">1</option>
                               <option value="">2</option>
@@ -163,7 +178,7 @@ const Cart = () => {
                             <select
                               name="year"
                               id="year"
-                              className="cursor-pointer rounded border-gray-300 bg-gray-50 py-3 px-2 text-sm shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"
+                              className="cursor-pointer rounded border-gray-300 bg-gray-50 py-3 px-2 text-sm shadow-sm outline-none transition focus:ring-2 "
                             >
                               <option value="">Year</option>
                               <option value="">2024</option>
@@ -183,7 +198,7 @@ const Cart = () => {
                               id="security-code"
                               name="security-code"
                               placeholder="Security code"
-                              className="block w-36 rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"
+                              className="block w-36 rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 "
                             />
                           </div>
                         </div>
@@ -197,7 +212,7 @@ const Cart = () => {
                           id="card-name"
                           name="card-name"
                           placeholder="Name on the card"
-                          className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 focus:ring-teal-500"
+                          className="mt-1 block w-full rounded border-gray-300 bg-gray-50 py-3 px-4 text-sm placeholder-gray-300 shadow-sm outline-none transition focus:ring-2 "
                         />
                       </div>
                     </form>
@@ -205,14 +220,15 @@ const Cart = () => {
                       By placing this order you agree to the{" "}
                       <a
                         href="#"
-                        className="whitespace-nowrap text-teal-400 underline hover:text-teal-600"
+                        className="whitespace-nowrap text-black underline hover:text-black"
                       >
                         Terms and Conditions
                       </a>
                     </p>
                     <button
-                      type="submit"
-                      className="mt-4 inline-flex w-full items-center justify-center rounded bg-teal-600 py-2.5 px-4 text-base font-semibold tracking-wide text-white text-opacity-80 outline-none ring-offset-2 transition hover:text-opacity-100 focus:ring-2 focus:ring-teal-500 sm:text-lg"
+                      type="button"
+                      onClick={checkout}
+                      className="mt-4 inline-flex w-full items-center justify-center rounded bg-blue-700 py-2.5 px-4 text-base font-semibold tracking-wide text-white text-opacity-80 outline-none ring-offset-2 transition hover:text-opacity-100 focus:ring-2 focus:ring-teal-500 sm:text-lg"
                     >
                       Place Order
                     </button>
