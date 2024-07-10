@@ -23,7 +23,7 @@ function Home() {
     <div>
       <Nav />
       {/* section one */}
-      <div className="home flex justify-items-center">
+      <div className="home  flex justify-items-center">
         {/* left */}
         <div className="text text-[#fff]">
           <h1 className="text-[35px] mb-[10px]">
@@ -49,7 +49,7 @@ function Home() {
       <div />
       <div className="sectionTwo div flex mb-[40px] ">
         {/* left box */}
-        <div className="bg-[#a4c3b2] mr-[10px]">
+        <div className="bg-[#a4a6c3] mr-[10px]">
           <h4 className="Title bg-[#a4c3b2] text-[gray] w-[100px] mt-[5px] ml-[5px]">
             Smartphone
           </h4>
