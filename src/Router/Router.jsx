@@ -1,14 +1,14 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../Pages/Home";
-import Details from "../Pages/Details";
-import Cart from "../Pages/Cart";
+import DetailsPage from "../Pages/Details";
+import CartPage from "../Pages/Cart";
 import Login from "../Pages/Login";
 import PreviousOrders from "../Pages/PreviousOrders";
-import OrderDetailsPage from "../Pages/OrderDetailsPage";
-// import Signup from "../Pages/Signup";
-// import Cheackout from ".../Pages/Cheackout";
 
+// import Signup from "../Pages/Signup";
+import Checkout from '../Pages/Checkout'
+import ProductsList from "../Components/ProductList";
 function Router() {
   const router = createBrowserRouter([
     {
@@ -17,7 +17,7 @@ function Router() {
     },
     {
       path: "/details/:id",
-      element: <Details />,
+      element: <DetailsPage />,
     },
     // {
     //   path: "/checkout",
@@ -25,7 +25,7 @@ function Router() {
     // },
     {
       path: "/cart",
-      element: <Cart />,
+      element: <CartPage />,
     },
     // {
     //   path: "/signup",
@@ -40,8 +40,12 @@ function Router() {
       element: <PreviousOrders />,
     },
     {
-      path: "/orders/:orderId",
-      element: <OrderDetailsPage />,
+      path: "/checkout",
+      element: <Checkout />,
+    },
+    {
+      path: "/products",
+      element: <ProductsList />,
     },
   ]);
   return <RouterProvider router={router} />;
