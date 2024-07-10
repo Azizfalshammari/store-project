@@ -4,12 +4,13 @@ import Nav from '../components/Nav'
 import axios from 'axios';
 import img from '../assets/labtop.png'
 import imgOrange from '../assets/orange.png'
-import img2 from '../assets/game.png';
+// import img2 from '../assets/game.png';
 import img3 from '../assets/rotator_mobiles2024._SS435_QL85_-removebg-preview.png';
 import img4 from '../assets/d-removebg-preview (4).png';
-import Background from '../assets/back.png';
+// import Background from '../assets/back.png';
 import game from '../assets/gameT.png';
 import Features from '../components/Features';
+import { Link } from 'react-router-dom';
 
 
 
@@ -88,9 +89,9 @@ function Home(props) {
           {filteredProducts.map(product => ( <div key={product.id} className='bg-white rounded-lg shadow-md overflow-hidden transform transition-transform hover:scale-105'> <img src={product.image} className='w-full h-80 object-cover' /> <div className='p-4 flex flex-col items-start'> 
         <h2 className='text-xl font-semibold mb-2'>{product.name}</h2>
         <p className='text-gray-700 mb-2'>{product.price}$</p>
-          {/* <Link to={`/details/${product.id}`}>  */}
+          <Link to={`/details/${product.id}`}> 
           <button className='bg-gradient-to-r from-[#FFB526] to-[#ED5004] text-black px-4 py-2 rounded-md hover:bg-yellow-600'> View Details </button> 
-          {/* </Link>  */}
+          </Link> 
           </div> </div> ))} </div> </div>
      </div>
 

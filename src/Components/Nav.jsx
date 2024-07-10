@@ -1,58 +1,50 @@
-
 import React from 'react';
 import Logout from './Logout';
-import logo from '../assets/logo.png'
-
-
-function Nav({ isLoggedIn,  handleLogout }) {
-    // { isLoggedIn, user, handleLogout }
+import { Link } from 'react-router-dom';
+function Nav({ isLoggedIn, handleLogout }) {
     return (
-        <div className='flex justify-items-center pt-[20px] pb-[20px] pr-[10px] pl-[10px] justify-between'>
-            <div className=''>
-                <div className="logo">
-                    {/* <img className='w-[50px] h-[50px] mt-[-17px]' src={logo} alt="" /> */}
-                    <img  className='w-[50px] h-[50px] mt-[-17px]' src="https://i.pinimg.com/564x/8a/3c/7f/8a3c7fbd4d9532a244ef3d5027d6e4c6.jpg" alt="" />
+        <div className="py-4 shadow-lg">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+                <div className="flex items-center space-x-4">
+                    <Link to="/">
+                    <h1 className='font-extrabold text-blue-900'>YAFHElectronic.</h1>
+                    </Link>
+                    <div className="relative flex items-center">
+                        <svg className="absolute left-3 w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 4a6 6 0 100 12 6 6 0 000-12zM21 21l-4.35-4.35" />
+                        </svg>
+                        <input type="text" className="pl-10 pr-3 py-2 rounded-md bg-gradient-to-r from-blue-900 to-blue-500 text-white focus:outline-none" placeholder="Search..." />
+                    </div>                </div>
+                <div className="flex items-center space-x-4 ml-auto">
+                    {!isLoggedIn ? (
+                        <ul className="flex items-center space-x-4">
+                        <Link to="/cart">
+                            <svg  className="w-12 h-12 text-blue-900" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M10 20a2 2 0 1 0 2 2 2 2 0 0 0-2-2zm0 3a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm10-3a2 2 0 1 0 2 2 2 2 0 0 0-2-2zm0 3a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm1.618-16.968a.78.78 0 0 0-.618-.312H6.472l-.39-2.466A2 2 0 0 0 4.112 0H2a1 1 0 0 0 0 2h2.112l.39 2.467 1.82 11.536a3 3 0 0 0 2.972 2.528h7.084a3 3 0 0 0 2.972-2.528L22.732 6a.993.993 0 0 0-.114-.968zM17.448 14a1 1 0 0 1-.992.857H8.584a1 1 0 0 1-.992-.857L6.8 8h12.4z"/>
+                            </svg>
+                        </Link>                          
+                        <Link to="/login">
+                        <li className="text-blue-900 rounded-xl border-2 border-blue-900 px-3 py-2 cursor-pointer">Login</li>
+                        </Link>
+                        <Link to="/signup">
+                        <li className="text-white cursor-pointer rounded-xl bg-gradient-to-r from-blue-900 to-blue-500 px-3 py-2">Sign Up</li>
+                        </Link>
+                        </ul>
+                    ) : (
+                        <div className="flex items-center space-x-4">
+                        <Link to="/cart">
+                            <svg  className="w-12 h-12" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M10 20a2 2 0 1 0 2 2 2 2 0 0 0-2-2zm0 3a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm10-3a2 2 0 1 0 2 2 2 2 0 0 0-2-2zm0 3a1 1 0 1 1 1-1 1 1 0 0 1-1 1zm1.618-16.968a.78.78 0 0 0-.618-.312H6.472l-.39-2.466A2 2 0 0 0 4.112 0H2a1 1 0 0 0 0 2h2.112l.39 2.467 1.82 11.536a3 3 0 0 0 2.972 2.528h7.084a3 3 0 0 0 2.972-2.528L22.732 6a.993.993 0 0 0-.114-.968zM17.448 14a1 1 0 0 1-.992.857H8.584a1 1 0 0 1-.992-.857L6.8 8h12.4z"/>
+                                </svg>
+                        </Link>
+                            <div className="text-gray-300 cursor-pointer">Profile</div>
+                            <Logout handleLogout={handleLogout} />
+                        </div>
+                    )}
                 </div>
             </div>
-            
-
-            {!isLoggedIn ? (
-                <ul className='flex justify-items-center'>
-                       <div className="icons flex mr-[20px]">
-                        <i class="fa-regular fa-user mr-[10px]"></i>
-                        <i class="fa-solid fa-bag-shopping  mr-[10px]"></i>    
-                        </div>
-                        <div className="search mr-[20px]">
-                            <input type="text" className='pl-[5px]' placeholder='Seacrch' />
-                            
-                        </div>
-                        <div className='flex'>
-                        <li className='mr-[10px]'>SignUp</li>
-                        <li>Login</li>
-                        </div>
-                 
-                </ul>
-            ) : (
-                <div className="flex">
-                    <div className="icons flex">
-                        <i className="fa-regular fa-user mr-[10px]"></i>
-                        <i className="fa-solid fa-bag-shopping  mr-[10px]"></i>
-                    </div>
-                    <div className='search flex ml-[1px]'>
-                        <input type="text" className='block mr-[40px]' placeholder='Search'/>
-                        <ul className='flex ml-[20px]'>
-                            <li className='mr-[10px]'>SignUp</li>
-                            <li className='active'>Login</li>
-                        </ul>
-                    </div>
-                    <Logout  handleLogout={handleLogout} />
-                    {/* <Logout user={user} handleLogout={handleLogout} /> */}
-                </div>
-            )}
         </div>
     );
 }
 
-
-
-export default Nav
+export default Nav;
