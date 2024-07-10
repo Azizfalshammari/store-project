@@ -105,7 +105,7 @@ function Home() {
                   <p className="price text-[#777]">{el.price}$</p>
                   <div className="flex ">
                     {/* <i class="far fa-heart mr-[10px]"></i> */}
-                    <i class="fas fa-shopping-bag"></i>
+                    <i className="fas fa-shopping-bag"></i>
                   </div>
                 </div>
               </div>

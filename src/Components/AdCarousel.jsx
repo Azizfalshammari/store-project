@@ -26,7 +26,7 @@ const AdCarousel = () => {
   };
 
   return (
-    <div className="w-full max-w-md mt-8">
+    <div className="w-full max-w-md my-8">
       <Slider {...settings}>
         {elements.map((item) => (
           <div key={item.id} className="p-4">

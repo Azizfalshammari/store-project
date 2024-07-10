@@ -34,8 +34,8 @@ function LoginForm() {
   };
 
   return (
-    <div className="flex  items-center justify-center min-h-screen bg-gray-100">
-            <AdCarousel />
+    <div className="flex max-md:flex-col items-center justify-center min-h-screen bg-gray-100">
+      <AdCarousel />
 
       <div className="flex flex-col items-center justify-center w-full max-w-md px-8 py-4 bg-white shadow-md rounded-lg">
         <img src="/path/to/logo.png" alt="Logo" className="w-24 h-24 mb-4" />{" "}
