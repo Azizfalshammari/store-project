@@ -1,9 +1,12 @@
 import "./App.css";
-import Router from './router/Router'
+import Cheack from "./Pages/Cart";
+import Router from "./router/Router";
+
 function App() {
   return (
     <>
-     <Router/>
+      <Router />
+
     </>
   );
 }
