@@ -1,3 +1,5 @@
+
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Footer from "../Components/Foter";
@@ -289,4 +291,10 @@ function Home(props) {
   );
 }
 
-export default Home;
+            <Features/>
+            </>
+          )
+        }
+  
+  
+  export default Home
