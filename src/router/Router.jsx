@@ -1,5 +1,6 @@
 
 import {createBrowserRouter,RouterProvider} from "react-router-dom";
+
 import Home from "../Pages/Home";
 import Signup from "../Pages/Signup";
 import Login from "../Pages/Login";
@@ -29,6 +30,7 @@ function Router() {
       return(
         <RouterProvider router={router} />
       )
+
 }
 
 export default Router
