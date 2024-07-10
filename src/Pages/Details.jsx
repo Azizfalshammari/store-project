@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import img1 from "../assets/product-return.png";
 import img2 from "../assets/free-delivery.png";
+import Nav from "../Components/Nav";
 import img3 from "../assets/payment-method.png";
 
 const Details = () => {
@@ -39,6 +40,7 @@ const Details = () => {
 
   return (
     <>
+      <Nav />
       <div className="container mx-auto mt-5 p-4">
         <div className="max-w-4xl md:flex">
           <div className="md:w-1/2 p-4">
