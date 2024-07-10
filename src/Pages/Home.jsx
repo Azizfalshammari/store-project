@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import Nav from '../Components/Nav';
-import Logout from '../Components/Logout';
+import Nav from '../components/Nav'
+// import Logout from '../Components/Logout';
 import axios from 'axios';
 import img from '../assets/labtop.png'
 import imgOrange from '../assets/orange.png'
@@ -9,6 +9,7 @@ import img3 from '../assets/rotator_mobiles2024._SS435_QL85_-removebg-preview.pn
 import img4 from '../assets/d-removebg-preview (4).png';
 import Background from '../assets/back.png';
 import game from '../assets/gameT.png';
+import Features from '../components/Features';
 
 
 
@@ -30,6 +31,7 @@ function Home(props) {
     }
 
     return (
+      <>
       <div>
      
         {/* <Nav isLoggedIn={isLogin} user={user} handleLogout={handleLogout} /> */}
@@ -96,6 +98,8 @@ function Home(props) {
           </div> </div> ))} </div> </div>
 
             </div>
+            <Features/>
+            </>
           )
         }
   
